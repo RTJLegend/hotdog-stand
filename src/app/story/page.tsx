@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "@/components/Header";
-import { Reveal, RevealGroup } from "@/components/Reveal";
+import { Reveal, RevealGroup, Wipe } from "@/components/Reveal";
 import { Footer } from "@/components/Sections";
 import { TIMELINE, TEAM, PRESS } from "@/lib/content";
 
@@ -29,6 +30,17 @@ export default function StoryPage() {
             for. Ten years in, the mustard hasn&apos;t changed. The line just got longer.
           </p>
         </Reveal>
+
+        <Wipe ratio="16/8" style={{ marginTop: 28, border: "2px solid var(--ink)", borderRadius: "var(--radius)", boxShadow: "var(--shadow)" }}>
+          <Image
+            src="/images/grill.jpg"
+            alt="Franks and sausages sizzling with steam on the grill"
+            width={1920}
+            height={1280}
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            loading="lazy"
+          />
+        </Wipe>
 
         <section style={{ marginTop: 48 }}>
           <Reveal>
@@ -86,6 +98,17 @@ export default function StoryPage() {
                 </p>
               ))}
             </div>
+            <Wipe ratio="16/8" style={{ marginTop: 16, border: "2px solid var(--ink)", borderRadius: "var(--radius)", boxShadow: "var(--shadow)" }}>
+              <Image
+                src="/images/party.jpg"
+                alt="Festival crowd with glowing food stalls at night"
+                width={1920}
+                height={1280}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                loading="lazy"
+              />
+            </Wipe>
+            <p style={{ fontSize: 14, marginTop: 8 }}>Festival crowds like this one — where the chili cheese took People&apos;s Choice in 2023.</p>
             <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
               <Link className="btn" href="/menu">
                 Taste the story

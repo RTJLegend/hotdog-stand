@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { todaysSpecial, type MenuItem } from "@/lib/menu";
 
@@ -36,7 +37,19 @@ export function Stars({ n }: { n: number }) {
 
 export function MenuCard({ item }: { item: MenuItem }) {
   return (
-    <article className="card" style={{ borderTop: "6px solid var(--chili)" }}>
+    <article className="card menu-card-item" style={{ borderTop: "6px solid var(--chili)", overflow: "hidden" }}>
+      {item.img && (
+        <div style={{ margin: "-16px -16px 12px", borderBottom: "2px solid var(--ink)" }}>
+          <Image
+            src={item.img.src}
+            alt={item.img.alt}
+            width={item.img.w}
+            height={item.img.h}
+            style={{ width: "100%", height: "auto", display: "block", aspectRatio: "16/9", objectFit: "cover" }}
+            loading="lazy"
+          />
+        </div>
+      )}
       <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
         <strong>{item.name}</strong>
         <span>{item.price}</span>

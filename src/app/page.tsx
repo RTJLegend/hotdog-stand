@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Ticker from "@/components/Ticker";
 import { SpecialBanner, Stars, MenuCard } from "@/components/Bits";
+import { Counter } from "@/components/Counters";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { Story, Footer } from "@/components/Sections";
 import { MENU } from "@/lib/menu";
@@ -18,10 +19,10 @@ const FEATURED = ["chili-cheese", "elote", "classic"];
 const featuredItems = MENU.flatMap((g) => g.items).filter((i) => FEATURED.includes(i.id));
 
 const STATS = [
-  { n: "10", l: "years on Madison" },
-  { n: "20", l: "menu items" },
-  { n: "4.8★", l: "from 2,300+ reviews" },
-  { n: "500+", l: "events catered" },
+  { n: <Counter to={10} />, l: "years on Madison" },
+  { n: <Counter to={20} />, l: "menu items" },
+  { n: <Counter to={4.8} decimals={1} suffix="★" />, l: "from 2,300+ reviews" },
+  { n: <Counter to={500} suffix="+" />, l: "events catered" },
 ];
 
 export default function Page() {

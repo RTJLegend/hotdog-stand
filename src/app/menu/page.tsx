@@ -1,10 +1,10 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import Header from "@/components/Header";
-import { MenuCard } from "@/components/Bits";
-import { Reveal, RevealGroup } from "@/components/Reveal";
+import MenuExplorer from "@/components/MenuExplorer";
+import { Reveal } from "@/components/Reveal";
 import { Footer } from "@/components/Sections";
-import { MENU, SPECIALS } from "@/lib/menu";
+import { SPECIALS } from "@/lib/menu";
 
 export const metadata: Metadata = {
   title: "Menu — Gold Star Dogs",
@@ -27,19 +27,7 @@ export default function MenuPage() {
           </p>
         </Reveal>
 
-        {MENU.map((g) => (
-          <section key={g.group} style={{ marginTop: 40 }}>
-            <Reveal>
-              <h2>{g.group.toUpperCase()}</h2>
-              <p style={{ marginTop: 0 }}>{g.blurb}</p>
-            </Reveal>
-            <RevealGroup style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 16 }}>
-              {g.items.map((it) => (
-                <MenuCard key={it.id} item={it} />
-              ))}
-            </RevealGroup>
-          </section>
-        ))}
+        <MenuExplorer />
 
         <section style={{ marginTop: 48 }}>
           <Reveal>

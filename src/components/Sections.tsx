@@ -89,6 +89,7 @@ export function Footer() {
       <div style={{ borderTop: "1px solid var(--cream-line)" }}>
         <div className="wrap" style={{ display: "flex", gap: 16, padding: "12px 20px", flexWrap: "wrap", fontSize: 14 }}>
           <span>© 2026 {SITE.brand}</span>
+          <span>Photos: Wikimedia Commons contributors (CC BY / CC BY-SA)</span>
           <span style={{ marginLeft: "auto" }}>Made with mustard in Chicago</span>
         </div>
       </div>

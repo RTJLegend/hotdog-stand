@@ -1,11 +1,11 @@
-export type MenuItem = { id: string; name: string; desc: string; price: string; tags?: string[] };
+export type MenuItem = { id: string; name: string; desc: string; price: string; tags?: string[]; img?: { src: string; alt: string; w: number; h: number } };
 
 export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
   {
     group: "Classics",
     blurb: "Steamed poppyseed buns, all-beef franks with a real snap.",
     items: [
-      { id: "classic", name: "Classic Chicago", desc: "Mustard, neon relish, onion, tomato wedges, pickle spear, sport peppers, celery salt.", price: "$6.75" },
+      { id: "classic", name: "Classic Chicago", desc: "Mustard, neon relish, onion, tomato wedges, pickle spear, sport peppers, celery salt.", price: "$6.75", img: { src: "/images/classic.jpg", alt: "Classic Chicago dog with neon relish, tomato and pickle", w: 1280, h: 960 } },
       { id: "plain", name: "Plain Snap", desc: "Just the frank and the bun. Pick your condiment at the counter.", price: "$5.50" },
       { id: "char", name: "Char Dog", desc: "Grilled over open flame, charred ends, grilled onions, mustard, pickles.", price: "$6.25" },
       { id: "kraut", name: "Kraut & Mustard", desc: "Warm sauerkraut, brown mustard, caraway salt on a toasted bun.", price: "$6.50" },
@@ -34,7 +34,7 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
     group: "Sides",
     blurb: "Cut fresh every morning. Salted with celery salt, obviously.",
     items: [
-      { id: "fries", name: "Crinkle Fries", desc: "Extra-crispy crinkles, celery salt.", price: "$4.25", tags: ["veg"] },
+      { id: "fries", name: "Crinkle Fries", desc: "Extra-crispy crinkles, celery salt.", price: "$4.25", tags: ["veg"], img: { src: "/images/fries.jpg", alt: "Basket of golden crinkle-cut fries", w: 1920, h: 1281 } },
       { id: "cheese-fries", name: "Cheese Fries", desc: "Crinkles under a ladle of cheese sauce, pickled jalapeños on request.", price: "$6.50", tags: ["veg"] },
       { id: "slaw", name: "Vinegar Slaw", desc: "Green cabbage, carrot, cider vinaigrette. Built for topping.", price: "$3.75", tags: ["veg", "gf"] },
       { id: "pickle-boat", name: "Pickle Boat", desc: "Half sour pickle, sport peppers, a shake of celery salt.", price: "$3.00", tags: ["veg", "gf"] },
@@ -47,7 +47,7 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
       { id: "soda", name: "Fountain Soda", desc: "Coke, Diet Coke, Sprite, root beer, orange. Free refills dine-in.", price: "$2.75" },
       { id: "lemonade", name: "Fresh Lemonade", desc: "Squeezed daily. Strawberry in summer.", price: "$3.50" },
       { id: "iced-tea", name: "Iced Tea", desc: "Unsweet or peach. Brewed every two hours.", price: "$3.00" },
-      { id: "choc-shake", name: "Chocolate Shake", desc: "Vanilla custard base, Dutch cocoa, whipped cream.", price: "$6.00" },
+      { id: "choc-shake", name: "Chocolate Shake", desc: "Vanilla custard base, Dutch cocoa, whipped cream.", price: "$6.00", img: { src: "/images/shake.jpg", alt: "Chocolate shake with whipped cream in a tall diner glass", w: 1920, h: 1536 } },
       { id: "vanilla-shake", name: "Vanilla Shake", desc: "Vanilla custard base, real vanilla bean, whipped cream.", price: "$6.00" },
       { id: "custard", name: "Frozen Custard Cup", desc: "Vanilla or the flavor of the week. Ask what's spinning.", price: "$5.00" },
     ],

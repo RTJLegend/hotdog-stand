@@ -55,8 +55,7 @@ export function Reveal({ children, className, style, delay = 0, y = 28 }: Reveal
   );
 }
 
-/** Staggers direct children on scroll into view. Children hidden via CSS (.rv-group > *). */
-export function RevealGroup({ children, className, style, gap = 80 }: RevealProps & { gap?: number }) {
+/** Staggers direct children on scroll into view. Children hidden via CSS (.rv-group > *). */export function RevealGroup({ children, className, style, gap = 80 }: RevealProps & { gap?: number }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -90,6 +89,61 @@ export function RevealGroup({ children, className, style, gap = 80 }: RevealProp
 
   return (
     <div ref={ref} className={["rv-group", className].filter(Boolean).join(" ")} style={style}>
+      {children}
+    </div>
+  );
+}
+
+/** Clip-path wipe reveal for images. Hidden via CSS (.wipe); noscript + reduced-motion fall back to visible. */
+export function Wipe({
+  children,
+  className,
+  style,
+  ratio = "16/10",
+}: {
+  children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
+  ratio?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (reducedMotion()) {
+      el.style.clipPath = "none";
+      const img = el.querySelector("img");
+      if (img) (img as HTMLElement).style.transform = "none";
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            animate(el, {
+              clipPath: ["inset(0% 100% 0% 0%)", "inset(0% 0% 0% 0%)"],
+              duration: 950,
+              ease: "outExpo",
+            });
+            const img = el.querySelector("img");
+            if (img) animate(img, { scale: [1.14, 1], duration: 1200, ease: "outExpo" });
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={["wipe", className].filter(Boolean).join(" ")}
+      style={{ aspectRatio: ratio, overflow: "hidden", ...style }}
+    >
       {children}
     </div>
   );

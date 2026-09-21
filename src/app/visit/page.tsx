@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "@/components/Header";
-import { Reveal, RevealGroup } from "@/components/Reveal";
+import { Reveal, RevealGroup, Wipe } from "@/components/Reveal";
 import { Footer } from "@/components/Sections";
 import { FAQS } from "@/lib/content";
 import { SITE } from "@/lib/site";
@@ -49,13 +50,18 @@ export default function VisitPage() {
             </table>
             <p style={{ marginBottom: 0, fontSize: 14 }}>Closed Thanksgiving, Christmas, and the morning of the Shamrock Shuffle.</p>
           </div>
-          <div
-            className="card"
-            style={{ minHeight: 220, display: "grid", placeItems: "center", textAlign: "center" }}
-            role="img"
-            aria-label="Map showing the stand at Madison and Clark"
-          >
-            [map — Madison & Clark, Loop]
+          <div>
+            <Wipe ratio="3/4" style={{ border: "2px solid var(--ink)", borderRadius: "var(--radius)", boxShadow: "var(--shadow)", minHeight: 320 }}>
+              <Image
+                src="/images/chicago.jpg"
+                alt="The Chicago Theatre marquee glowing at night, two blocks from the stand"
+                width={1280}
+                height={1920}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                loading="lazy"
+              />
+            </Wipe>
+            <p style={{ fontSize: 14, marginTop: 8 }}>The Loop at night — we&apos;re a two-block walk from the Theatre.</p>
           </div>
         </RevealGroup>
 

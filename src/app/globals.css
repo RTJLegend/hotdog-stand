@@ -22,6 +22,13 @@ label{display:grid;gap:6px;font-weight:600}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 
 /* Scroll-reveal + hero entrance initial states (JS animates to visible; noscript in layout restores) */
-.rv, .rv-group > *, [data-hero]{opacity:0}
+.rv, .rv-group > *, [data-hero], .menu-card-item{opacity:0}
+.wipe{clip-path:inset(0% 100% 0% 0%)}
+@media (hover:hover){
+  .card{transition:transform .25s ease,box-shadow .25s ease}
+  .card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .btn{transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+}
 .ticker-track{display:inline-block;padding:8px 0;animation:ticker 26s linear infinite}
 @keyframes ticker{to{transform:translateX(-50%)}}

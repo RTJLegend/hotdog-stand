@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${anton.variable} ${workSans.variable}`}>
       <body>
         <noscript>
-          <style>{`.rv,.rv-group>*,[data-hero]{opacity:1!important;transform:none!important}.ticker-track{animation:none!important}`}</style>
+          <style>{`.rv,.rv-group>*,[data-hero],.menu-card-item{opacity:1!important;transform:none!important}.wipe{clip-path:none!important}.ticker-track{animation:none!important}`}</style>
         </noscript>
         {children}
       </body>
