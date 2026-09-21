@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Ticker from "@/components/Ticker";
+import MenuBoard from "@/components/MenuBoard";
+import { FindUs, Story, Footer } from "@/components/Sections";
 
 export default function Page() {
   return (
@@ -9,11 +11,11 @@ export default function Page() {
       <main>
         <Hero />
         <Ticker />
-        <section id="menu" className="wrap" style={{ padding: "32px 20px" }}>
-          <h2>Menu</h2>
-          <p>Full menu board lands in the next task.</p>
-        </section>
+        <MenuBoard />
+        <FindUs />
       </main>
+      <Story />
+      <Footer />
     </>
   );
 }
