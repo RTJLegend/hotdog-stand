@@ -1,4 +1,12 @@
+import Link from "next/link";
 import { SITE } from "@/lib/site";
+
+const LINKS = [
+  { href: "/menu", label: "Menu" },
+  { href: "/story", label: "Our Story" },
+  { href: "/visit", label: "Visit Us" },
+  { href: "/catering", label: "Catering" },
+];
 
 export default function Header() {
   return (
@@ -15,20 +23,22 @@ export default function Header() {
         className="wrap"
         style={{ display: "flex", alignItems: "center", gap: 16, padding: "12px 20px", flexWrap: "wrap" }}
       >
-        <a
-          href="#top"
+        <Link
+          href="/"
           style={{ fontFamily: "var(--font-display)", fontSize: 22, color: "var(--ink)", textDecoration: "none" }}
         >
           ★ {SITE.brand}
-        </a>
-        <nav style={{ marginLeft: "auto", display: "flex", gap: 16 }} aria-label="Primary">
-          <a href="#menu">Menu</a>
-          <a href="#find-us">Find Us</a>
-          <a href="#catering">Catering</a>
+        </Link>
+        <nav style={{ marginLeft: "auto", display: "flex", gap: 16, flexWrap: "wrap" }} aria-label="Primary">
+          {LINKS.map((l) => (
+            <Link key={l.href} href={l.href}>
+              {l.label}
+            </Link>
+          ))}
         </nav>
-        <a className="btn" href="#order" style={{ padding: ".5rem 1rem" }}>
+        <Link className="btn" href="/order" style={{ padding: ".5rem 1rem" }}>
           Order Ahead
-        </a>
+        </Link>
       </div>
     </header>
   );

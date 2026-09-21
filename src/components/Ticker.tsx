@@ -1,4 +1,5 @@
 export default function Ticker() {
+  const items = "★ TODAY'S SPECIAL — SEE THE MENU BOARD ★ 123 W MADISON, CHICAGO ★ OPEN TIL 9PM ★ CATERING FOR 10–200 ★ ";
   return (
     <div
       style={{
@@ -8,11 +9,9 @@ export default function Ticker() {
         overflow: "hidden",
         whiteSpace: "nowrap",
       }}
+      aria-hidden="true"
     >
-      <div style={{ display: "inline-block", padding: "8px 0", animation: "ticker 22s linear infinite" }}>
-        ★ TODAY: CHILI CHEESE $8.50 ★ 123 W MADISON ★ OPEN TIL 9PM ★ CATERING AVAILABLE ★&nbsp;
-      </div>
-      <style>{`@keyframes ticker{to{transform:translateX(-50%)}}`}</style>
+      <div className="ticker-track">{items.repeat(4)}</div>
     </div>
   );
 }

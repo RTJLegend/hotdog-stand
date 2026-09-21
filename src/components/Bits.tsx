@@ -1,0 +1,56 @@
+"use client";
+
+import Link from "next/link";
+
+import { todaysSpecial, type MenuItem } from "@/lib/menu";
+
+const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+export function SpecialBanner() {
+  const day = new Date().getDay();
+  const s = todaysSpecial(day);
+  return (
+    <div className="card" style={{ background: "var(--mustard)", display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
+      <span style={{ fontFamily: "var(--font-display)", fontSize: 28 }}>★</span>
+      <div>
+        <strong>
+          {DAYS[day]} special: {s.name}
+        </strong>
+        <p style={{ margin: "4px 0 0" }}>{s.desc}</p>
+      </div>
+      <Link className="btn" href="/menu" style={{ marginLeft: "auto" }}>
+        See the menu
+      </Link>
+    </div>
+  );
+}
+
+export function Stars({ n }: { n: number }) {
+  return (
+    <span role="img" aria-label={`${n} out of 5 stars`} style={{ color: "var(--chili)", letterSpacing: 2 }}>
+      {"★".repeat(n)}
+      {"☆".repeat(5 - n)}
+    </span>
+  );
+}
+
+export function MenuCard({ item }: { item: MenuItem }) {
+  return (
+    <article className="card" style={{ borderTop: "6px solid var(--chili)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+        <strong>{item.name}</strong>
+        <span>{item.price}</span>
+      </div>
+      <div style={{ borderTop: "1px dashed var(--ink)", margin: "10px 0" }} aria-hidden="true" />
+      <p style={{ margin: "8px 0" }}>{item.desc}</p>
+      {item.tags?.map((t) => (
+        <span
+          key={t}
+          style={{ border: "1px solid var(--ink)", borderRadius: 999, padding: "2px 8px", fontSize: 12, marginRight: 6, background: "var(--paper)" }}
+        >
+          {t}
+        </span>
+      ))}
+    </article>
+  );
+}

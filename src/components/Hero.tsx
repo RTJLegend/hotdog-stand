@@ -1,6 +1,25 @@
+"use client";
+
+import Link from "next/link";
+
+import { useEffect } from "react";
+import { animate, createTimeline, stagger } from "animejs";
 import { SITE } from "@/lib/site";
 
 export default function Hero() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      animate("[data-hero]", { opacity: 1, duration: 1 });
+      return;
+    }
+    const tl = createTimeline({ defaults: { ease: "outExpo" } });
+    tl.add("[data-hero='badge']", { opacity: [0, 1], translateY: [14, 0], scale: [0.9, 1], duration: 550 })
+      .add("[data-hero='line']", { opacity: [0, 1], translateY: [46, 0], duration: 950, delay: stagger(110) }, "-=300")
+      .add("[data-hero='sub']", { opacity: [0, 1], translateY: [16, 0], duration: 650 }, "-=600")
+      .add("[data-hero='cta']", { opacity: [0, 1], translateY: [16, 0], duration: 600, delay: stagger(90) }, "-=500")
+      .add("[data-hero='art']", { opacity: [0, 1], scale: [0.94, 1], duration: 900 }, "-=750");
+  }, []);
+
   return (
     <section
       id="top"
@@ -9,6 +28,7 @@ export default function Hero() {
     >
       <div>
         <p
+          data-hero="badge"
           style={{
             background: "var(--mustard)",
             display: "inline-block",
@@ -21,20 +41,25 @@ export default function Hero() {
         >
           Open today · {SITE.hours[0].time}
         </p>
-        <h1 style={{ fontSize: "clamp(48px,7vw,88px)", margin: "16px 0" }}>SNAPPY, LOADED, NO SHORTCUTS.</h1>
-        <p>
+        <h1 style={{ fontSize: "clamp(48px,7vw,88px)", margin: "16px 0" }}>
+          <span data-hero="line" style={{ display: "block" }}>SNAPPY,</span>
+          <span data-hero="line" style={{ display: "block" }}>LOADED,</span>
+          <span data-hero="line" style={{ display: "block" }}>NO SHORTCUTS.</span>
+        </h1>
+        <p data-hero="sub">
           {SITE.tagline} Find us at {SITE.address} or order ahead for pickup.
         </p>
         <div style={{ display: "flex", gap: 12, marginTop: 20, flexWrap: "wrap" }}>
-          <a className="btn" href="#order">
+          <Link data-hero="cta" className="btn" href="/order">
             Order Ahead
-          </a>
-          <a className="btn btn-secondary" href="#menu">
+          </Link>
+          <Link data-hero="cta" className="btn btn-secondary" href="/menu">
             View Menu
-          </a>
+          </Link>
         </div>
       </div>
       <div
+        data-hero="art"
         style={{
           border: "2px solid var(--ink)",
           borderRadius: "var(--radius)",
@@ -47,9 +72,9 @@ export default function Hero() {
           textAlign: "center",
         }}
         role="img"
-        aria-label="Hero image placeholder: steaming hot dog"
+        aria-label="The Classic Chicago dog with all the toppings"
       >
-        [16:9 image — steaming dog]
+        [photo — Classic Chicago dog, dragged through the garden]
       </div>
     </section>
   );

@@ -20,3 +20,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 input,select,textarea{font:inherit;padding:.6rem .7rem;border:2px solid var(--ink);border-radius:8px;background:#fff;width:100%}
 label{display:grid;gap:6px;font-weight:600}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* Scroll-reveal + hero entrance initial states (JS animates to visible; noscript in layout restores) */
+.rv, .rv-group > *, [data-hero]{opacity:0}
+.ticker-track{display:inline-block;padding:8px 0;animation:ticker 26s linear infinite}
+@keyframes ticker{to{transform:translateX(-50%)}}
