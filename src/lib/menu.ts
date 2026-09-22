@@ -9,6 +9,8 @@ export type MenuItem = {
   story: string;
   pairs: string[];
   kcal: string;
+  nutrition: { protein: string; carbs: string; fat: string; fiber: string; sugar: string; sodium: string };
+  allergens: string[];
 };
 
 export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
@@ -23,6 +25,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["All-beef frank", "Poppyseed bun", "Yellow mustard", "Neon relish", "White onion", "Tomato wedges", "Pickle spear", "Sport peppers", "Celery salt"],
         story: "The dog that built the stand. Reuben's grandfather made it exactly this way, and the recipe on the wall hasn't changed a comma since 2016.",
         pairs: ["Crinkle Fries", "Fresh Lemonade"], kcal: "480",
+        nutrition: { protein: "14g", carbs: "52g", fat: "22g", fiber: "3g", sugar: "8g", sodium: "1450mg" },
+        allergens: ["wheat", "mustard", "celery"],
       },
       {
         id: "plain", name: "Plain Snap",
@@ -30,6 +34,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["All-beef frank", "Poppyseed bun", "Your pick of condiment"],
         story: "Purists order this to judge the frank on its own merits. It passes the test daily.",
         pairs: ["Pickle Boat", "Fountain Soda"], kcal: "340",
+        nutrition: { protein: "12g", carbs: "40g", fat: "14g", fiber: "2g", sugar: "4g", sodium: "900mg" },
+        allergens: ["wheat"],
       },
       {
         id: "char", name: "Char Dog",
@@ -38,6 +44,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["All-beef frank", "Poppyseed bun", "Grilled onions", "Mustard", "Pickle chips"],
         story: "Weekends only at first, until customers staged a polite revolt. The open-flame grill now runs all week.",
         pairs: ["Cheese Fries", "Iced Tea"], kcal: "410",
+        nutrition: { protein: "13g", carbs: "42g", fat: "20g", fiber: "2g", sugar: "6g", sodium: "1050mg" },
+        allergens: ["wheat", "mustard"],
       },
       {
         id: "kraut", name: "Kraut & Mustard",
@@ -45,6 +53,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["All-beef frank", "Toasted bun", "Sauerkraut", "Brown mustard", "Caraway salt"],
         story: "A nod to the Maxwell Street polish stands. Big Al's kraut simmers four hours every morning.",
         pairs: ["Vinegar Slaw", "Fountain Soda"], kcal: "390",
+        nutrition: { protein: "12g", carbs: "44g", fat: "16g", fiber: "3g", sugar: "6g", sodium: "1300mg" },
+        allergens: ["wheat", "mustard"],
       },
     ],
   },
@@ -59,6 +69,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["All-beef frank", "Poppyseed bun", "Beef chili", "Aged cheddar", "White onion"],
         story: "People's Choice at the West Loop Food Fest 2023. The chili recipe lives in a safe, and yes, that is a joke we will keep making.",
         pairs: ["Crinkle Fries", "Chocolate Shake"], kcal: "720",
+        nutrition: { protein: "28g", carbs: "52g", fat: "38g", fiber: "4g", sugar: "8g", sodium: "1650mg" },
+        allergens: ["wheat", "milk"],
       },
       {
         id: "bacon-ranch", name: "Bacon Ranch",
@@ -66,6 +78,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["All-beef frank", "Poppyseed bun", "Bacon", "Ranch", "Chives", "Cracked pepper"],
         story: "Invented during a staff meal in 2020. Lucia wrote it on the board as a joke special. It outsold everything that month.",
         pairs: ["Cheese Fries", "Fresh Lemonade"], kcal: "690",
+        nutrition: { protein: "24g", carbs: "46g", fat: "40g", fiber: "2g", sugar: "6g", sodium: "1500mg" },
+        allergens: ["wheat", "milk", "egg", "soy"],
       },
       {
         id: "elote", name: "Elote Dog",
@@ -74,6 +88,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["All-beef frank", "Poppyseed bun", "Corn crema", "Cotija", "Tajín", "Lime", "Cilantro"],
         story: "Born on a slow Tuesday when the corn delivery was too good to waste. Now the thing people cross town for.",
         pairs: ["Vinegar Slaw", "Fresh Lemonade"], kcal: "640",
+        nutrition: { protein: "18g", carbs: "54g", fat: "34g", fiber: "5g", sugar: "9g", sodium: "1250mg" },
+        allergens: ["wheat", "milk", "egg"],
       },
       {
         id: "pimento", name: "Pimento Cheese",
@@ -81,6 +97,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["All-beef frank", "Poppyseed bun", "Pimento cheese", "Pickled jalapeños", "Scallions"],
         story: "Ahaan's road-trip souvenir from a Nashville hot chicken joint, reimagined the Gold Star way.",
         pairs: ["Pickle Boat", "Iced Tea"], kcal: "660",
+        nutrition: { protein: "22g", carbs: "44g", fat: "40g", fiber: "2g", sugar: "5g", sodium: "1400mg" },
+        allergens: ["wheat", "milk", "egg"],
       },
       {
         id: "double", name: "Double Stack",
@@ -88,6 +106,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Two all-beef franks", "Poppyseed bun", "Beef chili", "Aged cheddar", "White onion"],
         story: "Ordered after Bulls wins with religious fervor. Tom H., you know who you are.",
         pairs: ["Fountain Soda", "Frozen Custard Cup"], kcal: "1050",
+        nutrition: { protein: "42g", carbs: "62g", fat: "58g", fiber: "5g", sugar: "10g", sodium: "2400mg" },
+        allergens: ["wheat", "milk"],
       },
     ],
   },
@@ -101,6 +121,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Plant-based frank", "Poppyseed bun", "Mustard", "Relish", "Onion", "Tomato", "Pickle", "Sport peppers"],
         story: "Elena R.'s review said it could convert people. She was right. This one outsells the Plain Snap.",
         pairs: ["Vinegar Slaw", "Iced Tea"], kcal: "380",
+        nutrition: { protein: "14g", carbs: "50g", fat: "14g", fiber: "6g", sugar: "8g", sodium: "1100mg" },
+        allergens: ["wheat", "soy", "mustard", "celery"],
       },
       {
         id: "loaded-veg", name: "Loaded Veg",
@@ -108,6 +130,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Plant-based frank", "Poppyseed bun", "Corn crema", "Cotija or vegan cheese", "Tajín", "Lime"],
         story: "The elote build works so well that the veg version earned its own permanent slot in 2022.",
         pairs: ["Crinkle Fries", "Fresh Lemonade"], kcal: "520",
+        nutrition: { protein: "16g", carbs: "56g", fat: "26g", fiber: "7g", sugar: "10g", sodium: "1200mg" },
+        allergens: ["wheat", "soy", "milk (skipped with vegan cheese)"],
       },
     ],
   },
@@ -122,6 +146,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Idaho potatoes", "Celery salt", "Fryer oil"],
         story: "Cut every morning, never frozen. The crinkle cut holds salt the way flat fries only dream about.",
         pairs: ["Classic Chicago", "Chocolate Shake"], kcal: "420",
+        nutrition: { protein: "5g", carbs: "52g", fat: "20g", fiber: "5g", sugar: "1g", sodium: "700mg" },
+        allergens: ["cooked in a shared fryer"],
       },
       {
         id: "cheese-fries", name: "Cheese Fries",
@@ -129,6 +155,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Crinkle fries", "Cheese sauce", "Pickled jalapeños (optional)"],
         story: "The ladle of cheese sauce is measured by heart, not by ounce.",
         pairs: ["Char Dog", "Fountain Soda"], kcal: "640",
+        nutrition: { protein: "18g", carbs: "54g", fat: "34g", fiber: "5g", sugar: "9g", sodium: "1250mg" },
+        allergens: ["wheat", "milk", "egg"],
       },
       {
         id: "slaw", name: "Vinegar Slaw",
@@ -136,6 +164,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Green cabbage", "Carrot", "Cider vinaigrette"],
         story: "Made to go ON dogs as much as beside them. Try it on the kraut dog and report back.",
         pairs: ["Kraut & Mustard", "Iced Tea"], kcal: "120",
+        nutrition: { protein: "1g", carbs: "18g", fat: "5g", fiber: "3g", sugar: "12g", sodium: "300mg" },
+        allergens: [],
       },
       {
         id: "pickle-boat", name: "Pickle Boat",
@@ -143,6 +173,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Half sour pickle", "Sport peppers", "Celery salt"],
         story: "For pickle people. You know if you are one.",
         pairs: ["Double Stack", "Fountain Soda"], kcal: "35",
+        nutrition: { protein: "1g", carbs: "7g", fat: "0g", fiber: "2g", sugar: "3g", sodium: "900mg" },
+        allergens: [],
       },
     ],
   },
@@ -156,6 +188,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Your pick", "Ice", "Free refills (dine-in)"],
         story: "Root beer outsells cola two to one here. Chicago has opinions about root beer.",
         pairs: ["Chili Cheese", "Cheese Fries"], kcal: "150",
+        nutrition: { protein: "0g", carbs: "40g", fat: "0g", fiber: "0g", sugar: "40g", sodium: "45mg" },
+        allergens: [],
       },
       {
         id: "lemonade", name: "Fresh Lemonade",
@@ -163,6 +197,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Lemons", "Cane sugar", "Water", "Strawberry (summer)"],
         story: "Squeezed every morning. The summer strawberry version has a small but intense following.",
         pairs: ["Elote Dog", "Veg Dog"], kcal: "180",
+        nutrition: { protein: "0g", carbs: "46g", fat: "0g", fiber: "0g", sugar: "44g", sodium: "20mg" },
+        allergens: [],
       },
       {
         id: "iced-tea", name: "Iced Tea",
@@ -170,6 +206,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Black tea", "Peach (optional)", "Ice"],
         story: "Brewed every two hours because day-old tea is a tragedy.",
         pairs: ["Char Dog", "Pimento Cheese"], kcal: "70",
+        nutrition: { protein: "0g", carbs: "18g", fat: "0g", fiber: "0g", sugar: "17g", sodium: "15mg" },
+        allergens: [],
       },
       {
         id: "choc-shake", name: "Chocolate Shake",
@@ -178,6 +216,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Vanilla custard", "Dutch cocoa", "Whipped cream"],
         story: "Thick enough to need the spoon that comes with it. Aisha B. crossed town for this shake and stayed for the dog.",
         pairs: ["Chili Cheese", "Crinkle Fries"], kcal: "780",
+        nutrition: { protein: "16g", carbs: "110g", fat: "28g", fiber: "3g", sugar: "88g", sodium: "420mg" },
+        allergens: ["milk", "egg"],
       },
       {
         id: "vanilla-shake", name: "Vanilla Shake",
@@ -185,6 +225,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Vanilla custard", "Vanilla bean", "Whipped cream"],
         story: "Real vanilla bean, visible as tiny black specks. The quiet overachiever of the menu.",
         pairs: ["Bacon Ranch", "Pickle Boat"], kcal: "720",
+        nutrition: { protein: "28g", carbs: "52g", fat: "38g", fiber: "4g", sugar: "8g", sodium: "1650mg" },
+        allergens: ["wheat", "milk"],
       },
       {
         id: "custard", name: "Frozen Custard Cup",
@@ -192,6 +234,8 @@ export const MENU: { group: string; blurb: string; items: MenuItem[] }[] = [
         ingredients: ["Frozen custard", "Weekly flavor"],
         story: "The weekly flavor is where the crew experiments. Past hits: malted pretzel, mango tajín, and one regrettable pickle week.",
         pairs: ["Double Stack", "Plain Snap"], kcal: "450",
+        nutrition: { protein: "9g", carbs: "62g", fat: "16g", fiber: "0g", sugar: "52g", sodium: "240mg" },
+        allergens: ["milk", "egg"],
       },
     ],
   },

@@ -52,7 +52,12 @@ export function Footer() {
       <div style={{ borderTop: "1px solid var(--cream-line)" }}>
         <div className="wrap" style={{ display: "flex", gap: 16, padding: "12px 20px", flexWrap: "wrap", fontSize: 14 }}>
           <span>© 2026 {SITE.brand}</span>
-          <span>Photos: Jeremy Keith, Marit and Toomas Hinnosaar, ruffin_ready, jeffreyw and Wikimedia Commons contributors (CC BY / CC BY-SA)</span>
+          <nav aria-label="Legal" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/cookies">Cookies</Link>
+            <Link href="/terms">Terms</Link>
+            <Link href="/accessibility">Accessibility</Link>
+          </nav>
           <span style={{ marginLeft: "auto" }}>Made with mustard in Chicago</span>
         </div>
       </div>

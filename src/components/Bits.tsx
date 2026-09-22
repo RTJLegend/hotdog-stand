@@ -37,9 +37,10 @@ export function Stars({ n }: { n: number }) {
 
 export function MenuCard({ item }: { item: MenuItem }) {
   return (
-    <article className="card menu-card-item" style={{ borderTop: "6px solid var(--chili)", overflow: "hidden" }}>
+    <Link href={`/menu/${item.id}`} className="menu-card-item" style={{ textDecoration: "none", color: "inherit", display: "block" }} aria-label={`${item.name}, ${item.price}. View details.`}>
+    <article className="card" style={{ borderTop: "6px solid var(--chili)", overflow: "hidden", height: "100%" }}>
       {item.img && (
-        <Link href={`/menu/${item.id}`} aria-label={`${item.name} details`} style={{ display: "block", margin: "-16px -16px 12px", borderBottom: "2px solid var(--ink)" }}>
+        <div style={{ margin: "-16px -16px 12px", borderBottom: "2px solid var(--ink)" }}>
           <Image
             src={item.img.src}
             alt={item.img.alt}
@@ -48,14 +49,10 @@ export function MenuCard({ item }: { item: MenuItem }) {
             style={{ width: "100%", height: "auto", display: "block", aspectRatio: "16/9", objectFit: "cover" }}
             loading="lazy"
           />
-        </Link>
+        </div>
       )}
       <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-        <strong>
-          <Link href={`/menu/${item.id}`} style={{ textDecoration: "none" }}>
-            {item.name}
-          </Link>
-        </strong>
+        <strong>{item.name}</strong>
         <span>{item.price}</span>
       </div>
       <div style={{ borderTop: "1px dashed var(--ink)", margin: "10px 0" }} aria-hidden="true" />
@@ -68,6 +65,8 @@ export function MenuCard({ item }: { item: MenuItem }) {
           {t}
         </span>
       ))}
+      <p style={{ margin: "12px 0 0", fontWeight: 700 }}>View details →</p>
     </article>
+    </Link>
   );
 }

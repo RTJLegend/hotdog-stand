@@ -71,7 +71,6 @@ label{display:grid;gap:6px;font-weight:600}
 
 /* Menu card photo zoom on hover */
 @media (hover:hover){
-  .menu-card-item a{display:block;overflow:hidden}
   .menu-card-item img{transition:transform .5s ease}
-  .menu-card-item a:hover img{transform:scale(1.06)}
+  .menu-card-item:hover img{transform:scale(1.06)}
 }

@@ -90,7 +90,42 @@ export default async function ItemPage({ params }: { params: Promise<{ id: strin
                   <li key={ing}>{ing}</li>
                 ))}
               </ul>
-              <p style={{ fontSize: 14 }}>About {item.kcal} kcal. Ask us about allergens, we keep the binder behind the register.</p>
+            </Reveal>
+            <Reveal>
+              <h2>NUTRITION FACTS</h2>
+              <table style={{ borderCollapse: "collapse", width: "100%", maxWidth: 420 }}>
+                <tbody>
+                  {[
+                    ["Calories", item.kcal],
+                    ["Protein", item.nutrition.protein],
+                    ["Carbs", item.nutrition.carbs],
+                    ["Fat", item.nutrition.fat],
+                    ["Fiber", item.nutrition.fiber],
+                    ["Sugar", item.nutrition.sugar],
+                    ["Sodium", item.nutrition.sodium],
+                  ].map(([k, v]) => (
+                    <tr key={k} style={{ borderBottom: "1px solid var(--cream-line)" }}>
+                      <td style={{ padding: "6px 12px 6px 0" }}><strong>{k}</strong></td>
+                      <td style={{ padding: "6px 0", textAlign: "right" }}>{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p style={{ fontSize: 14 }}>Estimates per serving. Ask us about allergens, we keep the binder behind the register.</p>
+            </Reveal>
+            <Reveal>
+              <h2>ALLERGENS</h2>
+              {item.allergens.length > 0 ? (
+                <p>
+                  {item.allergens.map((a) => (
+                    <span key={a} style={{ border: "2px solid var(--chili)", color: "var(--chili)", borderRadius: 999, padding: "2px 10px", fontSize: 13, marginRight: 6, fontWeight: 700 }}>
+                      {a}
+                    </span>
+                  ))}
+                </p>
+              ) : (
+                <p>No major allergens in the recipe. Made in a kitchen that also handles wheat, milk, egg, soy, mustard, and celery.</p>
+              )}
             </Reveal>
             <Reveal>
               <h2>WHY IT&apos;S HERE</h2>
