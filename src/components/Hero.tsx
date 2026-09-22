@@ -56,11 +56,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      id="top"
-      className="wrap"
-      style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 32, padding: "56px 20px", alignItems: "center" }}
-    >
+    <section id="top" className="hero-check" style={{ borderBottom: "2px solid var(--ink)" }}>
+      <div
+        className="wrap"
+        style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 32, padding: "56px 20px", alignItems: "center" }}
+      >
       <div>
         <p
           data-hero="badge"
@@ -130,6 +130,8 @@ export default function Hero() {
           </span>
         </div>
       </div>
+      </div>
     </section>
   );
 }
+

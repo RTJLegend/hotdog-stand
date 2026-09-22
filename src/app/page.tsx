@@ -9,7 +9,6 @@ import { Counter } from "@/components/Counters";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { Story, Footer } from "@/components/Sections";
 import { MENU } from "@/lib/menu";
-import HotDog3DSection from "@/components/HotDog3DSection";
 
 export const metadata: Metadata = {
   title: "Gold Star Dogs | Classic Hot Dogs in the Chicago Loop",
@@ -62,19 +61,6 @@ export default function Page() {
               </div>
             ))}
           </div>
-        </section>
-
-        <section className="wrap" style={{ padding: "48px 20px" }}>
-          <Reveal>
-            <h2 style={{ fontSize: "clamp(32px,4vw,52px)" }}>SPIN THE DOG</h2>
-            <p style={{ maxWidth: "62ch" }}>
-              A Classic Chicago rendered in real time. Drag it sideways to spin the tray, then come taste the
-              original. Mustard zigzag included at no extra charge.
-            </p>
-          </Reveal>
-          <Reveal>
-            <HotDog3DSection />
-          </Reveal>
         </section>
 
         <section className="wrap" style={{ padding: "48px 20px" }}>

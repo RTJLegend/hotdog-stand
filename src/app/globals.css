@@ -33,3 +33,10 @@ label{display:grid;gap:6px;font-weight:600}
 .ticker-track{display:inline-block;padding:8px 0;animation:ticker 26s linear infinite}
 .ticker-reverse .ticker-track{animation-direction:reverse}
 @keyframes ticker{to{transform:translateX(-50%)}}
+
+/* Diner tile checkerboard: quiet cream checks that sit behind content without fighting it */
+.hero-check{
+  background-color:var(--paper);
+  background-image:repeating-conic-gradient(var(--cream-line) 0% 25%, transparent 0% 50%);
+  background-size:52px 52px;
+}
