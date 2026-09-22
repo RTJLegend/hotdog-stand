@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import { Stars } from "@/components/Bits";
+import { Meter } from "@/components/Counters";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { Footer } from "@/components/Sections";
 import { REVIEWS } from "@/lib/content";
@@ -41,7 +42,7 @@ export default function ReviewsPage() {
               <div key={b.stars} style={{ display: "flex", alignItems: "center", gap: 8, margin: "6px 0" }}>
                 <span style={{ width: 28 }}>{b.stars}★</span>
                 <div style={{ flex: 1, background: "var(--cream-line)", border: "1px solid var(--ink)", borderRadius: 999, height: 14, overflow: "hidden" }}>
-                  <div style={{ width: `${b.pct}%`, height: "100%", background: "var(--mustard)" }} />
+                  <Meter pct={b.pct} />
                 </div>
                 <span style={{ width: 40, fontSize: 14 }}>{b.pct}%</span>
               </div>

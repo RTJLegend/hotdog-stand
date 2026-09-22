@@ -1,5 +1,8 @@
-export default function Ticker() {
-  const items = "★ TODAY'S SPECIAL: SEE THE MENU BOARD ★ 123 W MADISON, CHICAGO ★ OPEN TIL 9PM ★ CATERING FOR 10–200 ★ ";
+const DEFAULT_ITEMS =
+  "★ TODAY'S SPECIAL: SEE THE MENU BOARD ★ 123 W MADISON, CHICAGO ★ OPEN TIL 9PM ★ CATERING FOR 10 TO 200 ★ ";
+
+export default function Ticker({ items }: { items?: string }) {
+  const text = (items ?? DEFAULT_ITEMS).repeat(4);
   return (
     <div
       style={{
@@ -11,7 +14,7 @@ export default function Ticker() {
       }}
       aria-hidden="true"
     >
-      <div className="ticker-track">{items.repeat(4)}</div>
+      <div className="ticker-track">{text}</div>
     </div>
   );
 }

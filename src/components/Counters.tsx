@@ -53,3 +53,31 @@ export function Counter({
     </span>
   );
 }
+
+export function Meter({ pct }: { pct: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.style.width = `${pct}%`;
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            animate(el, { width: ["0%", `${pct}%`], duration: 1100, ease: "outExpo" });
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [pct]);
+
+  return <div ref={ref} style={{ width: 0, height: "100%", background: "var(--mustard)" }} />;
+}

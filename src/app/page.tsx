@@ -90,6 +90,10 @@ export default function Page() {
           <Story />
         </Reveal>
       </main>
+
+      <div style={{ marginTop: 8 }}>
+        <Ticker items="★ PEOPLE'S CHOICE 2023 ★ 4.8 STARS FROM 2,300+ REVIEWS ★ LOOP'S BEST LUNCH UNDER $10 ★ " />
+      </div>
       <Footer />
     </>
   );

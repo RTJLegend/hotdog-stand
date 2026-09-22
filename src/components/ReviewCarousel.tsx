@@ -40,6 +40,7 @@ export default function ReviewCarousel() {
   }, [index, paused, go]);
 
   const r = REVIEWS[index];
+  const dragX = useRef<number | null>(null);
 
   return (
     <div
@@ -47,7 +48,21 @@ export default function ReviewCarousel() {
       onMouseLeave={() => setPaused(false)}
       style={{ marginTop: 20 }}
     >
-      <div ref={trackRef} className="card" style={{ maxWidth: 720, minHeight: 220 }}>
+      <div
+        ref={trackRef}
+        className="card"
+        style={{ maxWidth: 720, minHeight: 220, touchAction: "pan-y" }}
+        onPointerDown={(e) => {
+          dragX.current = e.clientX;
+        }}
+        onPointerUp={(e) => {
+          if (dragX.current === null) return;
+          const dx = e.clientX - dragX.current;
+          dragX.current = null;
+          if (dx < -60) go(index + 1);
+          else if (dx > 60) go(index - 1);
+        }}
+      >
         <Stars n={r.rating} />
         <p style={{ fontWeight: 700, fontSize: 20, margin: "8px 0 4px" }}>{r.title}</p>
         <p style={{ margin: "0 0 8px" }}>{r.text}</p>

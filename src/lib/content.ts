@@ -15,7 +15,9 @@ export const REVIEWS: Review[] = [
 export const TIMELINE = [
   { year: "2016", title: "A cart and a dream", text: "Friends Reuben Thomas John and Ahaan Verma park a used hot dog cart outside the Loop farmers market with one recipe: Reuben's grandfather's Chicago dog build." },
   { year: "2017", title: "The line forms", text: "Word spreads through office lunch crowds. The cart sells out 34 Saturdays in a row. A second cart joins on weekends." },
+  { year: "2018", title: "First office catering", text: "A 40-person startup lunch turns into a weekly standing order. Ahaan builds the first labeled dietary spread on a folding table." },
   { year: "2019", title: "123 W Madison opens", text: "The brick-and-mortar stand opens with six stools, a grill, and the same steamed-bun setup. The elote dog debuts and never leaves the menu." },
+  { year: "2020", title: "Window service", text: "The dining room closes and the pickup window opens. Order-ahead starts as a phone number on a whiteboard. It never stops ringing." },
   { year: "2021", title: "Catering takes off", text: "Office lunches and backyard parties become half the business. The on-site cart does its first 200-guest wedding." },
   { year: "2023", title: "People's Choice, West Loop Food Fest", text: "The chili cheese wins the festival's People's Choice vote. The team frames the ribbon and hangs it crooked on purpose." },
   { year: "2025", title: "Ten years of snap", text: "Same buns, same mustard, bigger grill. The menu grows to twenty items, and Throwback Thursday brings back the $4 snap." },

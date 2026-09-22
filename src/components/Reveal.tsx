@@ -20,10 +20,11 @@ type RevealProps = {
   style?: CSSProperties;
   delay?: number;
   y?: number;
+  x?: number;
 };
 
-/** Fade-and-rise on scroll into view. Initial hidden state comes from CSS (.rv); noscript + reduced-motion fall back to visible. */
-export function Reveal({ children, className, style, delay = 0, y = 28 }: RevealProps) {
+/** Fade-and-rise (or slide) on scroll into view. Initial hidden state comes from CSS (.rv); noscript + reduced-motion fall back to visible. */
+export function Reveal({ children, className, style, delay = 0, y = 28, x = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export function Reveal({ children, className, style, delay = 0, y = 28 }: Reveal
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
-            animate(el, { opacity: [0, 1], translateY: [y, 0], duration: 800, delay, ease: "outExpo" });
+            animate(el, { opacity: [0, 1], translateX: [x, 0], translateY: [y, 0], duration: 800, delay, ease: "outExpo" });
             io.disconnect();
           }
         }
@@ -46,7 +47,7 @@ export function Reveal({ children, className, style, delay = 0, y = 28 }: Reveal
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [delay, y]);
+  }, [delay, y, x]);
 
   return (
     <div ref={ref} className={["rv", className].filter(Boolean).join(" ")} style={style}>
@@ -130,7 +131,7 @@ export function Wipe({
                 ease: "outExpo",
               });
               const img = inner.querySelector("img");
-              if (img) animate(img, { scale: [1.14, 1], duration: 1200, ease: "outExpo" });
+              if (img) animate(img, { scale: [1.22, 1], duration: 1400, ease: "outExpo" });
             }
             io.disconnect();
           }

@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { animate } from "animejs";
+import { animate, stagger } from "animejs";
 import { MENU, ALL_DOG_IDS } from "@/lib/menu";
 
 const TOPPINGS = ["mustard", "relish", "onion", "tomato", "pickle", "sport peppers", "celery salt", "cheese", "chili"];
@@ -26,6 +26,7 @@ export function OrderForm({ bare = false }: { bare?: boolean }) {
     if (status.state !== "ok") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     animate(".order-confirm", { opacity: [0, 1], scale: [0.92, 1], duration: 550, ease: "outBack" });
+    animate(".order-stars span", { opacity: [0, 1], scale: [0, 1.4, 1], rotate: [-30, 0], duration: 600, delay: stagger(90), ease: "outBack" });
   }, [status.state]);
 
   function toggleTopping(t: string) {
@@ -103,6 +104,9 @@ export function OrderForm({ bare = false }: { bare?: boolean }) {
       {status.state === "error" && <p role="alert">Error: {status.msg}</p>}
       {status.state === "ok" && (
         <p role="status" className="card order-confirm">
+          <span className="order-stars" aria-hidden="true" style={{ display: "flex", gap: 4, color: "var(--chili)", fontSize: 22, marginBottom: 8 }}>
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </span>
           Confirmed! Show this at the window: <strong>{status.id}</strong>
         </p>
       )}

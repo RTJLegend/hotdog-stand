@@ -35,6 +35,7 @@ export default function VisitPage() {
         <Reveal>
           <div
             style={{
+              position: "relative",
               marginTop: 24,
               border: "2px solid var(--ink)",
               borderRadius: "var(--radius)",
@@ -49,9 +50,24 @@ export default function VisitPage() {
               style={{ width: "100%", height: 420, border: 0, display: "block" }}
               loading="lazy"
             />
+            <div
+              style={{
+                position: "absolute",
+                left: 12,
+                bottom: 12,
+                background: "var(--mustard)",
+                border: "2px solid var(--ink)",
+                borderRadius: 999,
+                padding: "6px 14px",
+                fontWeight: 800,
+                boxShadow: "3px 3px 0 var(--ink)",
+              }}
+            >
+              ★ MADISON AND CLARK · LOOP
+            </div>
           </div>
           <p style={{ fontSize: 14, marginTop: 8 }}>
-            Map data © OpenStreetMap contributors. Marker: Madison and Clark.
+            Map data © OpenStreetMap contributors.
           </p>
         </Reveal>
 
