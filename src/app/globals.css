@@ -40,3 +40,27 @@ label{display:grid;gap:6px;font-weight:600}
   background-image:repeating-conic-gradient(var(--cream-line) 0% 25%, transparent 0% 50%);
   background-size:52px 52px;
 }
+
+/* Editorial drop cap */
+.dropcap::first-letter{
+  font-family:var(--font-display);
+  font-size:3.4em;
+  line-height:.85;
+  float:left;
+  padding-right:.12em;
+  color:var(--chili);
+}
+
+/* Alternating timeline: single rail on mobile, split rail on desktop */
+.tl{position:relative;display:grid;gap:28px;margin-top:20px}
+.tl::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:4px;background:var(--chili)}
+.tl-item{position:relative;padding-left:44px}
+.tl-item::before{content:"";position:absolute;left:4px;top:10px;width:14px;height:14px;border-radius:50%;background:var(--mustard);border:3px solid var(--ink)}
+@media(min-width:860px){
+  .tl::before{left:50%;margin-left:-2px}
+  .tl-item{width:50%;padding-left:0}
+  .tl-item:nth-child(odd){justify-self:start;padding-right:52px;text-align:right}
+  .tl-item:nth-child(odd)::before{left:auto;right:-11px}
+  .tl-item:nth-child(even){justify-self:end;padding-left:52px}
+  .tl-item:nth-child(even)::before{left:-11px}
+}
