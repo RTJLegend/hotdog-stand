@@ -94,7 +94,8 @@ export function Reveal({ children, className, style, delay = 0, y = 28 }: Reveal
   );
 }
 
-/** Clip-path wipe reveal for images. Hidden via CSS (.wipe); noscript + reduced-motion fall back to visible. */
+/** Clip-path wipe reveal for images. The outer box is observed (never clipped);
+    the inner .wipe layer carries the clipped initial state from CSS. */
 export function Wipe({
   children,
   className,
@@ -111,8 +112,9 @@ export function Wipe({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const inner = el.firstElementChild as HTMLElement | null;
     if (reducedMotion()) {
-      el.style.clipPath = "none";
+      if (inner) inner.style.clipPath = "none";
       const img = el.querySelector("img");
       if (img) (img as HTMLElement).style.transform = "none";
       return;
@@ -121,18 +123,20 @@ export function Wipe({
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
-            animate(el, {
-              clipPath: ["inset(0% 100% 0% 0%)", "inset(0% 0% 0% 0%)"],
-              duration: 950,
-              ease: "outExpo",
-            });
-            const img = el.querySelector("img");
-            if (img) animate(img, { scale: [1.14, 1], duration: 1200, ease: "outExpo" });
+            if (inner) {
+              animate(inner, {
+                clipPath: ["inset(0% 100% 0% 0%)", "inset(0% 0% 0% 0%)"],
+                duration: 950,
+                ease: "outExpo",
+              });
+              const img = inner.querySelector("img");
+              if (img) animate(img, { scale: [1.14, 1], duration: 1200, ease: "outExpo" });
+            }
             io.disconnect();
           }
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     io.observe(el);
     return () => io.disconnect();
@@ -141,10 +145,12 @@ export function Wipe({
   return (
     <div
       ref={ref}
-      className={["wipe", className].filter(Boolean).join(" ")}
+      className={className}
       style={{ aspectRatio: ratio, overflow: "hidden", ...style }}
     >
-      {children}
+      <div className="wipe" style={{ width: "100%", height: "100%", overflow: "hidden" }}>
+        {children}
+      </div>
     </div>
   );
 }

@@ -56,7 +56,7 @@ export default function VisitPage() {
         </Reveal>
 
         <RevealGroup
-          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, marginTop: 24 }}
+          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, marginTop: 24, alignItems: "start" }}
         >
           <div className="card">
             <h2 style={{ marginTop: 0 }}>ADDRESS</h2>
