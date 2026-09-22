@@ -16,6 +16,13 @@ export function validateOrder(o: OrderInput): { ok: boolean; error?: string } {
   return { ok: true };
 }
 
+export type ClubSignup = { name: string; phone: string };
+
+export function validateClubSignup(c: ClubSignup): { ok: boolean; error?: string } {
+  if (!c.name.trim()) return { ok: false, error: "Name is required." };
+  if (!/^[0-9+\-().\s]{7,20}$/.test(c.phone)) return { ok: false, error: "Enter a valid phone." };
+  return { ok: true };
+}
 export type CateringInput = {
   name: string;
   email: string;

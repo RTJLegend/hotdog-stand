@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { animate, stagger } from "animejs";
 import { MENU, ALL_DOG_IDS } from "@/lib/menu";
+import DogPreview from "@/components/DogPreview";
 
 const TOPPINGS = ["mustard", "relish", "onion", "tomato", "pickle", "sport peppers", "celery salt", "cheese", "chili"];
 
@@ -55,6 +56,9 @@ export function OrderForm({ bare = false }: { bare?: boolean }) {
 
   const formEl = (
     <form onSubmit={submit} style={{ display: "grid", gap: 12, maxWidth: 520 }}>
+      <div className="card" style={{ padding: 12 }}>
+        <DogPreview dog={form.dog} toppings={form.toppings} qty={form.qty} />
+      </div>
       <label>
         Dog
         <select value={form.dog} onChange={(e) => setForm({ ...form, dog: e.target.value })} required>

@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { validateOrder, validateCatering } from "./validate";
+import { validateOrder, validateCatering, validateClubSignup } from "./validate";
 
 describe("validateOrder", () => {
   it("rejects empty dog", () => {
@@ -32,6 +32,21 @@ describe("validateCatering", () => {
   });
   it("accepts valid request", () => {
     const r = validateCatering({ name: "A", email: "a@b.com", date: "2030-01-01", headcount: 20, message: "hi" });
+    assert.equal(r.ok, true);
+  });
+});
+
+describe("validateClubSignup", () => {
+  it("rejects bad phone", () => {
+    const r = validateClubSignup({ name: "Sam", phone: "abc" });
+    assert.equal(r.ok, false);
+  });
+  it("rejects empty name", () => {
+    const r = validateClubSignup({ name: "  ", phone: "312-555-0100" });
+    assert.equal(r.ok, false);
+  });
+  it("accepts valid signup", () => {
+    const r = validateClubSignup({ name: "Sam", phone: "312-555-0100" });
     assert.equal(r.ok, true);
   });
 });

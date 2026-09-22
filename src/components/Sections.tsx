@@ -21,6 +21,8 @@ const EXPLORE = [
   { href: "/order", label: "Order Ahead" },
   { href: "/catering", label: "Catering" },
   { href: "/reviews", label: "Reviews" },
+  { href: "/club", label: "Gold Star Club" },
+  { href: "/news", label: "News" },
 ];
 
 export function Footer() {

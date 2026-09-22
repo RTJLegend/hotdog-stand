@@ -9,6 +9,7 @@ import { Counter } from "@/components/Counters";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { Story, Footer } from "@/components/Sections";
 import { MENU } from "@/lib/menu";
+import { NEWS } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Gold Star Dogs | Classic Hot Dogs in the Chicago Loop",
@@ -84,6 +85,23 @@ export default function Page() {
               </Link>
             </div>
           </Reveal>
+        </section>
+
+        <section className="wrap" style={{ padding: "0 20px 48px" }}>
+          <Reveal>
+            <h2 style={{ fontSize: "clamp(32px,4vw,52px)" }}>LATEST NEWS</h2>
+          </Reveal>
+          <RevealGroup style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, marginTop: 12 }}>
+            {NEWS.slice(0, 2).map((n) => (
+              <Link key={n.slug} href={`/news/${n.slug}`} className="card" style={{ textDecoration: "none", color: "inherit", borderTop: "6px solid var(--mustard)" }}>
+                <p style={{ margin: 0, fontSize: 13, fontWeight: 800, letterSpacing: ".15em", color: "var(--chili)" }}>
+                  {n.tag.toUpperCase()} · {n.date.toUpperCase()}
+                </p>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: 24, margin: "8px 0" }}>{n.title.toUpperCase()}</p>
+                <p style={{ margin: 0 }}>{n.excerpt}</p>
+              </Link>
+            ))}
+          </RevealGroup>
         </section>
 
         <Reveal className="wrap" style={{ padding: "0 20px" }}>

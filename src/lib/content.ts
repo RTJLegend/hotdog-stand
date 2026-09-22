@@ -59,3 +59,48 @@ export const CATERING_STEPS = [
   { title: "Build the menu", text: "Pick packages, flag dietary needs, choose drop-off or the on-site cart." },
   { title: "We show up early", text: "Setup is on us, labeled and ready 30 minutes before mouths arrive." },
 ];
+
+export type NewsPost = { slug: string; title: string; date: string; tag: string; excerpt: string; body: string[] };
+
+export const NEWS: NewsPost[] = [
+  {
+    slug: "elote-tuesday-turns-three",
+    title: "Elote Tuesday Turns Three",
+    date: "July 14, 2026",
+    tag: "Specials",
+    excerpt: "The Tuesday special that started as a slow-day experiment is now old enough for candles. Same deal, plus a limited corn-keychain for regulars.",
+    body: [
+      "Three years ago, a corn delivery showed up too good to waste on a dead Tuesday. The crew charred it, folded it into crema, and put an elote dog on the board for one day only. The line that night told us everything.",
+      "Elote Tuesday has run every week since: elote dog plus lemonade for $10.50, all day. To mark year three, Tuesday regulars get a tiny corn keychain with any elote order, while they last. Ahaan ordered 300. There are more than 300 Tuesday regulars. Do the math and come early.",
+      "If you have never had one, this is the week. Charred corn crema, cotija, tajin, lime, cilantro, zero regrets.",
+    ],
+  },
+  {
+    slug: "cart-back-festival-season",
+    title: "The Cart Is Back for Festival Season",
+    date: "April 20, 2026",
+    tag: "Events",
+    excerpt: "The on-site cart wakes up for April through October. Block-party dates go first, so book spring events now.",
+    body: [
+      "Every April we roll the cart out of winter storage, replace the spark plugs of our patience, and open the event calendar through October. Weddings, block parties, office blowouts, and one memorable divorce party (congratulations, Diane).",
+      "The cart needs 50 guests minimum, one parking spot, and one power outlet. Everything else, crew included, comes with it. Spring Saturdays go first every year, so if your date rhymes with May or June, send the catering form today.",
+      "Full details live on the catering page, including the Big Event package and the tasting box for wedding planners.",
+    ],
+  },
+  {
+    slug: "throwback-thursday-four-dollars",
+    title: "Throwback Thursday Drops to $4",
+    date: "January 8, 2026",
+    tag: "Specials",
+    excerpt: "The Plain Snap returns to its 2016 cart price every Thursday. Our longest-running special gets even longer.",
+    body: [
+      "In 2016 the cart sold the Plain Snap for four dollars. Ten years later, rent is not 2016 rent, but Thursdays are Thursdays. The Plain Snap is $4.00 all day, every Thursday, dine-in or pickup.",
+      "Why Thursday? Wednesday regulars kept asking what was next, and Reuben got tired of saying nothing. Now Thursday has an answer and the weekend has a warm-up act.",
+      "Limit four per person so the line keeps moving. Gold Star Club stars still count, because loyalty should not take days off.",
+    ],
+  },
+];
+
+export function findPost(slug: string) {
+  return NEWS.find((n) => n.slug === slug);
+}

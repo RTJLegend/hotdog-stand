@@ -33,9 +33,12 @@ export default function OrderPage() {
               <div className="card" style={{ marginTop: 16 }}>
                 <strong>Rush-hour honesty</strong>
                 <p style={{ margin: "8px 0 0" }}>
-                  Friday 11:30–1:30 runs about 20 minutes even for advance orders. Order before 11 for the fastest
+                  Friday 11:30 to 1:30 runs about 20 minutes even for advance orders. Order before 11 for the fastest
                   turnaround. Feeding 10 or more? Use <Link href="/catering">catering</Link> instead. It gets its own
                   grill slot.
+                </p>
+                <p style={{ margin: "8px 0 0" }}>
+                  <Link href="/club">Join Gold Star Club</Link> and earn a star on this order.
                 </p>
               </div>
             </Reveal>
