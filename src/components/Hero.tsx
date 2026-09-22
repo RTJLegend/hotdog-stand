@@ -19,7 +19,7 @@ export default function Hero() {
       .add("[data-hero='cta']", { opacity: [0, 1], translateY: [16, 0], duration: 600, delay: stagger(90) }, "-=500")
       .add("[data-hero='art']", { opacity: [0, 1], scale: [0.94, 1], duration: 900 }, "-=750")
       .add(".hero-badge", { opacity: [0, 1], scale: [0.7, 1], duration: 500, ease: "outBack" }, "-=400");
-    // Gentle float on the badge inner — separate element from the entrance above, so no transform conflict.
+    // Gentle float on the badge inner. Separate element from the entrance above, so no transform conflict.
     const float = animate(".hero-badge-inner", {
       translateY: [0, -8],
       duration: 1900,
@@ -28,6 +28,27 @@ export default function Hero() {
       loop: true,
       delay: 2600,
     });
+    // Subtle parallax on the hero photo while it is in view.
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const img = document.querySelector(".hero-photo img");
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          if (img && window.scrollY < window.innerHeight) {
+            (img as HTMLElement).style.transform = `translateY(${window.scrollY * 0.08}px) scale(1.12)`;
+          }
+        });
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        tl.revert();
+        float.revert();
+      };
+    }
     return () => {
       tl.revert();
       float.revert();
@@ -74,6 +95,7 @@ export default function Hero() {
       </div>
       <div
         data-hero="art"
+        className="hero-photo"
         style={{
           position: "relative",
           border: "2px solid var(--ink)",
@@ -86,9 +108,9 @@ export default function Hero() {
       >
         <Image
           src="/images/hero.jpg"
-          alt="Classic Chicago dog with pickle spear, tomato, mustard and neon relish in a paper tray"
+          alt="Chicago dog with the skyline behind it"
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", transform: "scale(1.12)" }}
           priority
         />
         <div className="hero-badge" style={{ position: "absolute", left: 12, bottom: 12 }}>

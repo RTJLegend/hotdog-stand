@@ -7,7 +7,7 @@ import { Footer } from "@/components/Sections";
 import { SPECIALS } from "@/lib/menu";
 
 export const metadata: Metadata = {
-  title: "Menu — Gold Star Dogs",
+  title: "Menu | Gold Star Dogs",
   description: "Classics, loaded dogs, garden options, sides, shakes and weekly specials at Gold Star Dogs, Chicago Loop.",
 };
 
@@ -29,13 +29,17 @@ export default function MenuPage() {
 
         <MenuExplorer />
 
+        <div className="ticker-reverse" aria-hidden="true" style={{ background: "var(--ink)", color: "var(--mustard)", overflow: "hidden", whiteSpace: "nowrap", borderTop: "2px solid var(--ink)", borderBottom: "2px solid var(--ink)", marginTop: 48 }}>
+          <div className="ticker-track">{"★ CLASSICS ★ LOADED ★ GARDEN ★ SIDES ★ SIPS & SWEETS ".repeat(6)}</div>
+        </div>
+
         <section style={{ marginTop: 48 }}>
           <Reveal>
             <h2>WEEKLY SPECIALS</h2>
             <div className="card" style={{ marginTop: 12 }}>
               {SPECIALS.map((s) => (
                 <p key={s.day} style={{ margin: "8px 0" }}>
-                  <strong>{DAY_NAMES[s.day]}:</strong> {s.name} — {s.desc}
+                  <strong>{DAY_NAMES[s.day]}:</strong> {s.name}: {s.desc}
                 </p>
               ))}
             </div>

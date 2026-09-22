@@ -7,7 +7,7 @@ import { Footer } from "@/components/Sections";
 import { TIMELINE, TEAM, PRESS } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Our Story — Gold Star Dogs",
+  title: "Our Story | Gold Star Dogs",
   description: "From a used cart in 2016 to a Madison Street staple: the story, timeline, team and press behind Gold Star Dogs.",
 };
 
@@ -17,19 +17,33 @@ export default function StoryPage() {
       <Header />
       <main className="wrap" style={{ padding: "48px 20px" }}>
         <Reveal>
-          <h1 style={{ fontSize: "clamp(44px,6vw,76px)" }}>TWO BROTHERS, ONE CART</h1>
-          <p style={{ maxWidth: "64ch" }}>
-            Gold Star Dogs started in 2016 when brothers Marcus and Daryl Webb bought a used hot dog cart with their
-            savings and parked it outside the Loop farmers market. The pitch was simple: a Chicago dog built exactly
-            the way their grandfather made it — steamed poppyseed bun, all-beef frank with a snap, and every topping
-            in its right place. The cart sold out its first Saturday by 1pm, and most Saturdays after that.
-          </p>
-          <p style={{ maxWidth: "64ch" }}>
-            In 2019 the stand at 123 W Madison opened with six stools and a bigger grill. The menu grew, the chili
-            got its own pot, and the elote dog — invented for a slow Tuesday — became the thing people cross town
-            for. Ten years in, the mustard hasn&apos;t changed. The line just got longer.
-          </p>
+          <h1 style={{ fontSize: "clamp(44px,6vw,76px)" }}>TWO FRIENDS, ONE CART</h1>
         </Reveal>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 32, marginTop: 8 }}>
+          <Reveal>
+            <p style={{ maxWidth: "64ch" }}>
+              Gold Star Dogs started in 2016 when friends Reuben Thomas John and Ahaan Verma bought a used hot dog cart with their
+              savings and parked it outside the Loop farmers market. The pitch was simple: a Chicago dog built exactly
+              the way Reuben&apos;s grandfather made it: steamed poppyseed bun, all-beef frank with a snap, and every topping
+              in its right place. The cart sold out its first Saturday by 1pm, and most Saturdays after that.
+            </p>
+            <p style={{ maxWidth: "64ch" }}>
+              In 2019 the stand at 123 W Madison opened with six stools and a bigger grill. The menu grew, the chili
+              got its own pot, and the elote dog, invented for a slow Tuesday, became the thing people cross town
+              for. Ten years in, the mustard hasn&apos;t changed. The line just got longer.
+            </p>
+          </Reveal>
+          <Reveal>
+            <div className="card" style={{ background: "var(--ink)", color: "var(--paper)" }}>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: 24, margin: "0 0 12px", color: "var(--mustard)" }}>FAST FACTS</p>
+              <p style={{ margin: "8px 0" }}><strong>Founded:</strong> 2016, Loop farmers market</p>
+              <p style={{ margin: "8px 0" }}><strong>Owners:</strong> Reuben Thomas John and Ahaan Verma</p>
+              <p style={{ margin: "8px 0" }}><strong>Stand:</strong> 123 W Madison St since 2019</p>
+              <p style={{ margin: "8px 0" }}><strong>Menu:</strong> 20 items, chili made daily at 6am</p>
+              <p style={{ margin: "8px 0 0" }}><strong>Claim to fame:</strong> People&apos;s Choice, West Loop Food Fest 2023</p>
+            </div>
+          </Reveal>
+        </div>
 
         <Wipe ratio="16/8" style={{ marginTop: 28, border: "2px solid var(--ink)", borderRadius: "var(--radius)", boxShadow: "var(--shadow)" }}>
           <Image
@@ -108,7 +122,7 @@ export default function StoryPage() {
                 loading="lazy"
               />
             </Wipe>
-            <p style={{ fontSize: 14, marginTop: 8 }}>Festival crowds like this one — where the chili cheese took People&apos;s Choice in 2023.</p>
+            <p style={{ fontSize: 14, marginTop: 8 }}>Festival crowds like this one, where the chili cheese took People&apos;s Choice in 2023.</p>
             <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
               <Link className="btn" href="/menu">
                 Taste the story

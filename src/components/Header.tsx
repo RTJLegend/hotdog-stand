@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE } from "@/lib/site";
+import { LogoLockup } from "@/components/Logo";
 
 const LINKS = [
   { href: "/menu", label: "Menu" },
@@ -25,9 +25,10 @@ export default function Header() {
       >
         <Link
           href="/"
-          style={{ fontFamily: "var(--font-display)", fontSize: 22, color: "var(--ink)", textDecoration: "none" }}
+          style={{ color: "var(--ink)", textDecoration: "none" }}
+          aria-label="Gold Star Dogs home"
         >
-          ★ {SITE.brand}
+          <LogoLockup />
         </Link>
         <nav style={{ marginLeft: "auto", display: "flex", gap: 16, flexWrap: "wrap" }} aria-label="Primary">
           {LINKS.map((l) => (
@@ -35,6 +36,7 @@ export default function Header() {
               {l.label}
             </Link>
           ))}
+          <Link href="/reviews">Reviews</Link>
         </nav>
         <Link className="btn" href="/order" style={{ padding: ".5rem 1rem" }}>
           Order Ahead

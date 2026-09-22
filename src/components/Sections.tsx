@@ -1,44 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
-
-export function FindUs() {
-  return (
-    <section
-      id="find-us"
-      className="wrap"
-      style={{ padding: "48px 20px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}
-    >
-      <div>
-        <h2>FIND US</h2>
-        <p>{SITE.address}</p>
-        <p>{SITE.phone}</p>
-        <table>
-          <tbody>
-            {SITE.hours.map((h) => (
-              <tr key={h.days}>
-                <td style={{ paddingRight: 16 }}>
-                  <strong>{h.days}</strong>
-                </td>
-                <td>{h.time}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p style={{ marginTop: 16 }}>
-          <Link href="/visit">Parking, transit & FAQs →</Link>
-        </p>
-      </div>
-      <div
-        className="card"
-        style={{ minHeight: 240, display: "grid", placeItems: "center", textAlign: "center" }}
-        role="img"
-        aria-label="Map showing the stand on W Madison St"
-      >
-        [map — Madison & Clark, Loop]
-      </div>
-    </section>
-  );
-}
+import { LogoLockup } from "@/components/Logo";
 
 export function Story() {
   return (
@@ -58,6 +20,7 @@ const EXPLORE = [
   { href: "/visit", label: "Visit Us" },
   { href: "/order", label: "Order Ahead" },
   { href: "/catering", label: "Catering" },
+  { href: "/reviews", label: "Reviews" },
 ];
 
 export function Footer() {
@@ -68,8 +31,8 @@ export function Footer() {
         style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 24, padding: "32px 20px" }}
       >
         <div>
-          <p style={{ fontFamily: "var(--font-display)", fontSize: 20, margin: "0 0 8px" }}>★ {SITE.brand}</p>
-          <p style={{ margin: 0 }}>{SITE.tagline}</p>
+          <LogoLockup compact />
+          <p style={{ margin: "8px 0 0" }}>{SITE.tagline}</p>
         </div>
         <nav aria-label="Explore">
           <p style={{ fontWeight: 700, margin: "0 0 8px" }}>Explore</p>
@@ -89,7 +52,7 @@ export function Footer() {
       <div style={{ borderTop: "1px solid var(--cream-line)" }}>
         <div className="wrap" style={{ display: "flex", gap: 16, padding: "12px 20px", flexWrap: "wrap", fontSize: 14 }}>
           <span>© 2026 {SITE.brand}</span>
-          <span>Photos: Wikimedia Commons contributors (CC BY / CC BY-SA)</span>
+          <span>Photos: Jeremy Keith, Marit and Toomas Hinnosaar, ruffin_ready, jeffreyw and Wikimedia Commons contributors (CC BY / CC BY-SA)</span>
           <span style={{ marginLeft: "auto" }}>Made with mustard in Chicago</span>
         </div>
       </div>

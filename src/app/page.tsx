@@ -3,15 +3,16 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Ticker from "@/components/Ticker";
-import { SpecialBanner, Stars, MenuCard } from "@/components/Bits";
+import { SpecialBanner, MenuCard } from "@/components/Bits";
+import ReviewCarousel from "@/components/ReviewCarousel";
 import { Counter } from "@/components/Counters";
 import { Reveal, RevealGroup } from "@/components/Reveal";
 import { Story, Footer } from "@/components/Sections";
 import { MENU } from "@/lib/menu";
-import { REVIEWS } from "@/lib/content";
+import HotDog3DSection from "@/components/HotDog3DSection";
 
 export const metadata: Metadata = {
-  title: "Gold Star Dogs — Classic Hot Dogs in the Chicago Loop",
+  title: "Gold Star Dogs | Classic Hot Dogs in the Chicago Loop",
   description: "Snappy all-beef dogs, loaded specials, shakes and catering. 123 W Madison St, Chicago. Order ahead for pickup.",
 };
 
@@ -65,20 +66,24 @@ export default function Page() {
 
         <section className="wrap" style={{ padding: "48px 20px" }}>
           <Reveal>
+            <h2 style={{ fontSize: "clamp(32px,4vw,52px)" }}>SPIN THE DOG</h2>
+            <p style={{ maxWidth: "62ch" }}>
+              A Classic Chicago rendered in real time. Drag it sideways to spin the tray, then come taste the
+              original. Mustard zigzag included at no extra charge.
+            </p>
+          </Reveal>
+          <Reveal>
+            <HotDog3DSection />
+          </Reveal>
+        </section>
+
+        <section className="wrap" style={{ padding: "48px 20px" }}>
+          <Reveal>
             <h2 style={{ fontSize: "clamp(32px,4vw,52px)" }}>REGULARS TALK</h2>
           </Reveal>
-          <RevealGroup style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 16, marginTop: 20 }}>
-            {REVIEWS.slice(0, 3).map((r) => (
-              <article key={r.name + r.date} className="card">
-                <Stars n={r.rating} />
-                <p style={{ fontWeight: 700, margin: "8px 0 4px" }}>{r.title}</p>
-                <p style={{ margin: "0 0 8px" }}>{r.text}</p>
-                <p style={{ margin: 0, fontSize: 14 }}>
-                  — {r.name} · {r.source}, {r.date}
-                </p>
-              </article>
-            ))}
-          </RevealGroup>
+          <Reveal>
+            <ReviewCarousel />
+          </Reveal>
         </section>
 
         <section className="wrap" style={{ padding: "0 20px 48px" }}>

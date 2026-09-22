@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { animate } from "animejs";
 import { CATERING_PACKAGES } from "@/lib/menu";
 
@@ -8,11 +9,12 @@ export function CateringPackages() {
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 16 }}>
       {CATERING_PACKAGES.map((p) => (
-        <article key={p.id} className="card">
+        <Link key={p.id} href={`/catering/${p.id}`} className="card" style={{ textDecoration: "none" }}>
           <strong>{p.name}</strong>
           <p style={{ margin: "8px 0" }}>{p.desc}</p>
           <span>{p.price}</span>
-        </article>
+          <p style={{ margin: "8px 0 0", fontWeight: 700 }}>See details →</p>
+        </Link>
       ))}
     </div>
   );

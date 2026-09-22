@@ -1,5 +1,5 @@
 export default function Ticker() {
-  const items = "★ TODAY'S SPECIAL — SEE THE MENU BOARD ★ 123 W MADISON, CHICAGO ★ OPEN TIL 9PM ★ CATERING FOR 10–200 ★ ";
+  const items = "★ TODAY'S SPECIAL: SEE THE MENU BOARD ★ 123 W MADISON, CHICAGO ★ OPEN TIL 9PM ★ CATERING FOR 10–200 ★ ";
   return (
     <div
       style={{

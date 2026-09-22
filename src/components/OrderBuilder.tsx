@@ -1,13 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { animate } from "animejs";
-import { MENU } from "@/lib/menu";
+import { MENU, ALL_DOG_IDS } from "@/lib/menu";
 
 const TOPPINGS = ["mustard", "relish", "onion", "tomato", "pickle", "sport peppers", "celery salt", "cheese", "chili"];
 
-export default function OrderBuilder({ bare = false }: { bare?: boolean }) {
-  const [form, setForm] = useState({ dog: "", toppings: [] as string[], qty: 1, name: "", phone: "", pickupTime: "" });
+export function OrderForm({ bare = false }: { bare?: boolean }) {
+  const params = useSearchParams();
+  const prefill = params.get("dog");
+  const [form, setForm] = useState({
+    dog: prefill && ALL_DOG_IDS.includes(prefill) ? prefill : "",
+    toppings: [] as string[],
+    qty: 1,
+    name: "",
+    phone: "",
+    pickupTime: "",
+  });
   const [status, setStatus] = useState<{ state: "idle" | "pending" | "ok" | "error"; msg?: string; id?: string }>({
     state: "idle",
   });
@@ -50,7 +60,7 @@ export default function OrderBuilder({ bare = false }: { bare?: boolean }) {
           <option value="">Choose…</option>
           {MENU.flatMap((g) => g.items).map((i) => (
             <option key={i.id} value={i.id}>
-              {i.name} — {i.price}
+              {i.name} · {i.price}
             </option>
           ))}
         </select>
@@ -104,8 +114,16 @@ export default function OrderBuilder({ bare = false }: { bare?: boolean }) {
   return (
     <section id="order" className="wrap" style={{ padding: "48px 20px" }}>
       <h2>ORDER AHEAD</h2>
-      <p>Pickup only in v1. Pay at the window.</p>
+      <p>Pickup only. Pay at the window.</p>
       {formEl}
     </section>
+  );
+}
+
+export default function OrderBuilder({ bare = false }: { bare?: boolean }) {
+  return (
+    <Suspense>
+      <OrderForm bare={bare} />
+    </Suspense>
   );
 }

@@ -31,4 +31,5 @@ label{display:grid;gap:6px;font-weight:600}
   .btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
 }
 .ticker-track{display:inline-block;padding:8px 0;animation:ticker 26s linear infinite}
+.ticker-reverse .ticker-track{animation-direction:reverse}
 @keyframes ticker{to{transform:translateX(-50%)}}

@@ -39,7 +39,7 @@ export function MenuCard({ item }: { item: MenuItem }) {
   return (
     <article className="card menu-card-item" style={{ borderTop: "6px solid var(--chili)", overflow: "hidden" }}>
       {item.img && (
-        <div style={{ margin: "-16px -16px 12px", borderBottom: "2px solid var(--ink)" }}>
+        <Link href={`/menu/${item.id}`} aria-label={`${item.name} details`} style={{ display: "block", margin: "-16px -16px 12px", borderBottom: "2px solid var(--ink)" }}>
           <Image
             src={item.img.src}
             alt={item.img.alt}
@@ -48,10 +48,14 @@ export function MenuCard({ item }: { item: MenuItem }) {
             style={{ width: "100%", height: "auto", display: "block", aspectRatio: "16/9", objectFit: "cover" }}
             loading="lazy"
           />
-        </div>
+        </Link>
       )}
       <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-        <strong>{item.name}</strong>
+        <strong>
+          <Link href={`/menu/${item.id}`} style={{ textDecoration: "none" }}>
+            {item.name}
+          </Link>
+        </strong>
         <span>{item.price}</span>
       </div>
       <div style={{ borderTop: "1px dashed var(--ink)", margin: "10px 0" }} aria-hidden="true" />
